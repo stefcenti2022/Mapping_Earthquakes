@@ -36,39 +36,32 @@ let baseMaps = {
 
 // Create the map object with center, zoom level, and default layer.
 let map = L.map('mapid', {
-  center: [43.7, 79.3],
-  zoom: 2,
-  layers: [satelliteStreets],
+  center: [43.7, -79.3],
+  zoom: 11,
+  layers: [streets],
 });
 
 // Pass our map layers into our layers control and add the layers control to the map.
 // Expand the control to be open by default.
 L.control.layers(baseMaps).addTo(map).expand();
 
-// Set the default of the Control object to be set to 'Night Navigation'.
-dark.addTo(map);
-
 // Accessing the airport GeoJSON URL
-let torontoData =
-  'https://raw.githubusercontent.com/stefcenti2022/Mapping_Earthquakes/main/torontoRoutes.json';
+let torontoHoods =
+  'https://raw.githubusercontent.com/stefcenti2022/Mapping_Earthquakes/main/torontoNeighborhoods.json';
 
 // Grabbing our GeoJSON data.
-d3.json(torontoData).then(function (data) {
+d3.json(torontoHoods).then(function (data) {
   console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJSON(data, {
-    color: 'lightyellow',
-    weight: 2,
+    color: 'blue',
+    weight: 1,
+    fillColor: 'yellow',
     // We turn each feature into a marker on the map.
     onEachFeature: function (feature, layer) {
       console.log(layer);
       layer.bindPopup(
-        '<h4>Airline: ' +
-          feature.properties.airline +
-          '<hr>' +
-          'Destination: ' +
-          feature.properties.dst +
-          '</h4>'
+        '<h4>Neighborhood: ' + feature.properties.AREA_NAME + '</h4>'
       );
     },
   }).addTo(map);
