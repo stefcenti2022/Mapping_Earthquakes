@@ -39,15 +39,18 @@ let baseMaps = {
 // Add a layer group for all earthquakes that occurred in the past 7 days.
 // Add a 2nd layer group for the tectonic plate data.
 // Add a 3rd layer group for the major earthquake data.
+// Add a 4th layer group for the orogens data.
 let allEarthquakes = new L.LayerGroup();
 let tectonicPlates = new L.LayerGroup();
 let majorEQ = new L.LayerGroup();
+let orogens = new L.LayerGroup();
 
 // Add a reference to each layer group to the overlays object.
 let overlays = {
   'Earthquakes': allEarthquakes,
   'Tectonic Plates': tectonicPlates,
   'Major Earthquakes': majorEQ,
+  'Orogens': orogens,
 };
 
 // Set up data URLs
@@ -57,6 +60,8 @@ let majorEQUrl =
   'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson';
 let tectonicPlateUrl =
   'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
+let orogensUrl =
+  'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_orogens.json';
 
 // Then we add a control to the map that will allow the user to change which
 // layers are visible.
@@ -204,6 +209,29 @@ d3.json(tectonicPlateUrl).then(function (data) {
 });
 
 //********************************************
+//  SET UP OROGENS LAYER
+//********************************************
+// Use d3.json to make a call to get our Tectonic Plate geoJSON data.
+d3.json(orogensUrl).then(function (data) {
+  // This function returns the style data for each of the tectonic plates we plot on
+  // the map.
+  function styleInfo(feature) {
+    return {
+      color: 'darkblue',
+      weight: 0.5,
+    };
+  }
+
+  // Creating a GeoJSON layer with the retrieved data.
+  L.geoJson(data, {
+    // We set the style for each tectonic play using our styleInfo function.
+    style: styleInfo,
+  }).addTo(orogens);
+
+  console.log(data);
+});
+
+//********************************************
 //  SET UP LEGEND
 //********************************************
 // Create a legend control object.
@@ -243,6 +271,7 @@ legend.onAdd = function () {
 tectonicPlates.addTo(map);
 allEarthquakes.addTo(map);
 majorEQ.addTo(map);
+orogens.addTo(map);
 
 // Add a legend to the map.
 legend.addTo(map);
