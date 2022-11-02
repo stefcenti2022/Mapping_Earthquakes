@@ -59,7 +59,7 @@ The following overlays are available to choose from:
 
 ### Legend
 
-The legend increases the color intensity as the magnitude of an earthquake intensifies. Colors and magnitudes range from 0 to 5+. When Major Earthquakes is selected, if there are any earthquakes with a magnitude greater than 6, the marker will have an even deeper color red than shown in the legend.
+The legend increases the color intensity as the magnitude of an earthquake intensifies. Colors and magnitudes range from 0 to 5+. When only `Major Earthquakes` is selected and there are any earthquakes with a magnitude greater than 6, the marker will have an even deeper color red than shown in the legend.
 
 Thankfully, these earthquakes are somewhat rare, however, there may not be any available to show up on the map in this color.
 
@@ -69,17 +69,17 @@ Thankfully, these earthquakes are somewhat rare, however, there may not be any a
 
 ### Streets Map with All Earthquakes
 
-The following image shows all the earthquakes that occurred over the week of Oct. 25th to Nov. 1st 2022. Note how the red circles mark the earthquakes with a magnitude of 5+ and are the largest circles on the map. Earthquakes with lower magnitude are green/yellow and smaller circles.
+The following image shows all the earthquakes that occurred over the week of Oct. 25th to Nov. 1st 2022. Note how the red circles mark the earthquakes with a magnitude of 5+ and are the largest circles on the map. Earthquakes with a lower magnitude are green/yellow and smaller circles.
 
 <img src="./Earthquake_Challenge/static/images/streets_plates_all.png" alt="Streets Plates All Quakes" width="600"/>
 
 ### Streets Map with Tectonic Plates
 
-De-selecting all layers except for the Tectonic Plates layer shows all the boundaries of the tectonic plates around the globe.
+De-selecting all layers except for the Tectonic Plates layer to show all the boundaries of the tectonic plates around the globe. The image below should look similar.
 
-Notice how on the previous showing all the earthquakes and the tectonic plate boundaries that almost all major earthquakes are along the boundaries.
+Looking back at the previous map which had both `All Earthquakes` and `Tectonic Plates` selected shows how almost all earthquakes above 4.0 are along the boundaries.
 
-Most notably are earthquakes that show up where there are no boundaries such as in the interior of the continental US. Do these quakes have any correlation with fracking in these areas?
+Most notably are the earthquakes that show up where there are no boundaries. For example, the interior of the continental US had a lot of earthquakes over the past week, albeit smaller ones. Does the number of these quakes have any correlation with fracking in these areas?
 
 <img src="./Earthquake_Challenge/static/images/streets_tectonic_plates.png" alt="Streets Tectonic Plates" width="600"/>
 
@@ -121,9 +121,9 @@ To get more detail on the recent earthquake near San Jose, we can click on the c
 
 Note that the magnitude is 5.06, the location was 15 km ESE of Alum Rock, CA which is just outside of San Jose.
 
-Also note that this quake occurred almost exactly 1 week before completing this readme. In the previous image, this quake is shown in an orange color as this color was used to represent earthquakes of magnitude between 5 and 6 on the major earthquake layer but on the all earthquakes layer, any quakes with a magnitude greater than 5 is shown at the top of the scale shown in the legend.
+Also note that this quake occurred almost exactly 1 week before completing this document. In the previous image, this quake is shown in an orange color as this color was used to represent earthquakes of magnitude between 5 and 6 on the major earthquake layer and on the all earthquakes layer. Any earthquakes with a magnitude greater than 5 is shown at the top of the scale shown in the legend.
 
-Changes to the code, added an additional color to distinguish earthquakes with a magnitude greater than 6. Fortunately there have not been anymore earthquakes greater than 6 since last Tuesday, however, we cannot show what they would look like in at the time of this writing.
+Changes to the code, added an additional color to distinguish earthquakes with a magnitude greater than 6. Fortunately there have not been anymore earthquakes greater than 6 since last Tuesday. That being the case, we cannot show what they would look like at the time of this writing.
 
 <img src="./Earthquake_Challenge/static/images/quake_details.png" alt="Quake Details" width="600"/>
 
