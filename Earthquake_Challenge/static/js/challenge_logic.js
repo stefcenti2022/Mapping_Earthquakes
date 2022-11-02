@@ -23,7 +23,18 @@ let satelliteStreets = L.tileLayer(
   }
 );
 
-// Create the map object with center, zoom level and default layer.
+// We create the third tile layer that will be the background of our map.
+let outdoors = L.tileLayer(
+  'https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/tiles/{z}/{x}/{y}?access_token={accessToken}',
+  {
+    attribution:
+      'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    accessToken: API_KEY,
+  }
+);
+
+// // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
   center: [40.7, -94.5],
   zoom: 3,
@@ -34,6 +45,7 @@ let map = L.map('mapid', {
 let baseMaps = {
   'Streets': streets,
   'Satellite': satelliteStreets,
+  'Outdoors': outdoors,
 };
 
 // Add a layer group for all earthquakes that occurred in the past 7 days.
@@ -91,7 +103,7 @@ d3.json(allEarthquakesUrl).then(function (data) {
   // of the earthquake.
   function getColor(magnitude) {
     return magnitude > 5
-      ? '#ea2c2c'
+      ? '#ea2c2c' // 5+
       : magnitude > 4
       ? '#ea822c'
       : magnitude > 3
@@ -125,7 +137,9 @@ d3.json(allEarthquakesUrl).then(function (data) {
         'Magnitude: ' +
           feature.properties.mag +
           '<br>Location: ' +
-          feature.properties.place
+          feature.properties.place +
+          '<br>Time: ' +
+          new Date(feature.properties.time)
       );
     },
   }).addTo(allEarthquakes);
@@ -154,7 +168,7 @@ d3.json(majorEQUrl).then(function (data) {
 
   // Color function that uses three colors for the major earthquakes based on the magnitude of the earthquake.
   function getColor(magnitude) {
-    return magnitude > 6 ? '#ea2c2c' : magnitude > 5 ? '#ea822c' : '#ee9c00';
+    return magnitude > 6 ? '#6e0a0a' : magnitude > 5 ? '#ea2c2c' : '#ea822c';
   }
 
   // This function determines the radius of the earthquake marker based on its magnitude.
@@ -181,7 +195,9 @@ d3.json(majorEQUrl).then(function (data) {
         'Magnitude: ' +
           feature.properties.mag +
           '<br>Location: ' +
-          feature.properties.place
+          feature.properties.place +
+          '<br>Time: ' +
+          new Date(feature.properties.time)
       );
     },
   }).addTo(majorEQ);
@@ -269,9 +285,9 @@ legend.onAdd = function () {
 
 // Add each layer to the map.
 tectonicPlates.addTo(map);
+orogens.addTo(map);
 allEarthquakes.addTo(map);
 majorEQ.addTo(map);
-orogens.addTo(map);
 
 // Add a legend to the map.
 legend.addTo(map);
