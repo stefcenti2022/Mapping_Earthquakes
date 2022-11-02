@@ -59,7 +59,9 @@ The following overlays are available to choose from:
 
 ### Legend
 
-The legend increases the color intensity as the magnitude of an earthquake intensifies. Colors and magnitudes range from
+The legend increases the color intensity as the magnitude of an earthquake intensifies. Colors and magnitudes range from 0 to 5+. When Major Earthquakes is selected, if there are any earthquakes with a magnitude greater than 6, the marker will have an even deeper color red than shown in the legend.
+
+Thankfully, these earthquakes are somewhat rare, however, there may not be any available to show up on the map in this color.
 
 <img src="./Earthquake_Challenge/static/images/legend.png" alt="legend" width="100"/>
 
