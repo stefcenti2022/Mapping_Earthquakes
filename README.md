@@ -146,3 +146,13 @@ Note that this image was taken before the week passed. Since the popup was recen
 As we have seen, there are a multitude of ways the maps and layers can be used to zoom in and move around on the map to learn about various earthquakes throughout the world.
 
 Hope you enjoyed this journey and find more ways to use these maps to investigate more earthquakes over time.
+
+## Release Notes
+
+### Dec. 7, 2022:
+
+This project was originally deployed on Nov. 2, 2022. Since that time the deployment has expired and only displays the README.md file.
+
+Refer to the following stackoverflow link for a resolution to this issue:
+
+https://stackoverflow.com/questions/24098792/how-to-force-github-pages-build/61706020#61706020
